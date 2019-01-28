@@ -14,22 +14,22 @@ function createFile {
 
 function pushOpForTask {
     echo "- op: add" >> worker_patch.yml
-    echo -e "  path: /jobs/name=$1/task=$2/tag" >> worker_patch.yml
-    echo -e "  value: {{ worker-tags }}" >> worker_patch.yml
+    echo -e "  path: /jobs/name=$1/task=$2/tags" >> worker_patch.yml
+    echo -e "  value: ((worker-tags))" >> worker_patch.yml
     echo "" >> worker_patch.yml
 }
 
 function pushOpForGet {
     echo "- op: add" >> worker_patch.yml
-    echo -e "  path: /jobs/name=$1/plan/0/aggregate/get=$2/tag" >> worker_patch.yml
-    echo -e "  value: {{ worker-tags }}" >> worker_patch.yml
+    echo -e "  path: /jobs/name=$1/plan/0/aggregate/get=$2/tags" >> worker_patch.yml
+    echo -e "  value: ((worker-tags))" >> worker_patch.yml
     echo "" >> worker_patch.yml
 }
 
 function pushOpForResource {
     echo "- op: add" >> worker_patch.yml
-    echo -e "  path: /resources/name=$1/tag" >> worker_patch.yml
-    echo -e "  value: {{ worker-tags }}" >> worker_patch.yml
+    echo -e "  path: /resources/name=$1/tags" >> worker_patch.yml
+    echo -e "  value: ((worker-tags))" >> worker_patch.yml
     echo "" >> worker_patch.yml
 }
 

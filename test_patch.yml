@@ -1,0 +1,15 @@
+- op: add
+  path: /jobs/-
+  value:
+    name: test-new-job
+    plan:
+      - get: pipelines-repo
+      - get: pivnet-product
+        resource: pivnet-product
+        params:
+          globs:
+          - "*.pivotal" 
+
+- op: add
+  path: /jobs/name=delete-product/task=unstage-tile/tag
+  value: {{ worker-tags }}
